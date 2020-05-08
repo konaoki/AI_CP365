@@ -26,3 +26,11 @@ class Adaline:
             return 1
         else:
             return -1
+    def copy(self):
+        nmodel = Adaline()
+        nmodel.ws=self.ws
+        nmodel.data=self.data
+        nmodel.labels=self.labels
+        nmodel.nexamples=self.nexamples
+        nmodel.nfeatures=self.nfeatures
+        return nmodel
