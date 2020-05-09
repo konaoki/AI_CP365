@@ -8,7 +8,7 @@ class SVMTester:
     nfeat = 2
     #dg = DataGenerator.DataGenerator(nfeat,ndata,0.01)
     #data = dg.generate()
-    #data.to_csv('2d_test_2.data', index=False,header=False)
+    #data.to_csv('2d_test.data', index=False,header=False)
     data=pd.read_csv('2d_test.data', header = None, encoding='utf-8')
     pData = data.iloc[:ndata, :nfeat].values
     labels = data.iloc[:ndata,nfeat].values
@@ -23,8 +23,9 @@ class SVMTester:
             nerror+=1
 
     print(nerror)
-    #print(model.ws)
-    #x = np.linspace(-100, 100, 1000)
-    #plt.plot(x,-x*model.ws[1]/model.ws[0])
+    ws=model.weights
+    print(ws)
+    x = np.linspace(np.min(pData[:,0]), np.max(pData[:,0]), 1000)
+    plt.plot(x,-x*ws[0]/ws[1])
     plt.scatter(pData[:,0],pData[:,1],c=labels)
-    #plt.show()
+    plt.show()

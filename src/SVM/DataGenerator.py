@@ -18,5 +18,10 @@ class DataGenerator:
             sign=np.sign(np.dot(dir,data[i,:d]))
             data[i,:d]=np.add(data[i,:d],sign*dir*separation)
             data[i,d]=sign
+        for i in range(n-nerror,n):
+            data[i,:d]=nr.random_integers(1,n/10)*nr.randn(d)
+            sign=np.sign(np.dot(dir,data[i,:d]))
+            #data[i,:d]=np.add(data[i,:d],sign*dir*separation)
+            data[i,d]=-1*sign
 
         return pd.DataFrame(data)

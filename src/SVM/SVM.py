@@ -18,7 +18,8 @@ class SVM:
                 prediction=0
                 for j in range(nex):
                     sum+=lm[j]*labels[j]*np.dot(data[i],data[j])
-                of=1-labels[i]*sum
+                of=1-0.5*labels[i]*sum
+                #print(of)
                 lm[i]=lm[i]+(lr/np.dot(data[i],data[i]))*of
             if l==epochs-1:
                 biases=np.zeros(nex)
@@ -31,6 +32,10 @@ class SVM:
         self.lm=lm
         self.data=data
         self.labels=labels
+        weights=np.zeros(nfeat)
+        for i in range(nex):
+            weights=np.add(weights,lm[i]*labels[i]*data[i])
+        self.weights=weights
     def predict(self, sample, raw=0, bias=None, lm=[], data=[], labels=[]):
         prediction=0
         if bias==None:
