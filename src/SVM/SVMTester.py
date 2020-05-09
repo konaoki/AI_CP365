@@ -6,10 +6,10 @@ import matplotlib.pyplot as plt
 class SVMTester:
     ndata = 300
     nfeat = 2
-    #dg = DataGenerator.DataGenerator(nfeat,ndata,0.01)
-    #data = dg.generate()
-    #data.to_csv('2d_test.data', index=False,header=False)
-    data=pd.read_csv('2d_test.data', header = None, encoding='utf-8')
+    dg = DataGenerator.DataGenerator(nfeat,ndata,0)
+    data = dg.generate()
+    data.to_csv('2d_test.data', index=False,header=False)
+    #data=pd.read_csv('2d_test.data', header = None, encoding='utf-8')
     pData = data.iloc[:ndata, :nfeat].values
     labels = data.iloc[:ndata,nfeat].values
 
