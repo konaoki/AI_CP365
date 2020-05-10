@@ -7,6 +7,17 @@ sys.path.insert(1, '../Adaline')
 import SVM
 import Adaline
 import OVA
+from sklearn.datasets import load_digits
 class OVATester:
-    def __init__(self):
-        return None
+    digits = load_digits()
+    svm = SVM.SVM()
+    adaline = Adaline.Adaline()
+    ova = OVA.OVA(svm)
+    nex=100
+    ova.fit(digits.data[:nex],digits.target[:nex])
+    error=0
+    for i in range(10):
+        print(digits.target[nex+i])
+        if ova.predict(digits.data[nex+i])!=digits.target[nex+i]:
+            error+=1
+    print(error)

@@ -53,3 +53,11 @@ class SVM:
             return [prediction,np.sign(prediction)]
         else:
             return np.sign(prediction)
+    def copy(self):
+        model = SVM()
+        model.bias=self.bias
+        model.lm=self.lm
+        model.data=self.data.copy()
+        model.labels=self.labels.copy()
+        model.weights=self.weights.copy()
+        return model

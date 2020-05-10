@@ -8,8 +8,10 @@ class OVA:
         self.labels=labels
         label_lookup=dict()
         ulabels=np.unique(labels)
+        self.ulabels=ulabels
         nfeat=len(ulabels)
-        models=np.array(nfeat)
+        self.nfeat=nfeat
+        models=[]
         for i,ul in enumerate(ulabels):
             label_lookup[ul]=i
             blabels = np.where(labels==ul,1,0) #binary labels
@@ -18,5 +20,10 @@ class OVA:
         self.label_lookup=label_lookup
         self.models=models
     def predict(self,sample):
-        model=models[self.label_lookup[sample[1]]]
-        return model.predict(sample)
+        for i in range(self.nfeat):
+            model=self.models[i]
+            p=model.predict(sample)
+            print(str(i)+" : "+str(p))
+            #if p==1:
+        #return self.ulabels[i]
+        return 0
