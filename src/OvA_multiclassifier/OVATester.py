@@ -13,10 +13,10 @@ class OVATester:
     svm = SVM.SVM()
     adaline = Adaline.Adaline()
     ova = OVA.OVA(svm)
-    nex=100
+    nex=1000
     ova.fit(digits.data[:nex],digits.target[:nex])
     error=0
-    for i in range(10):
+    for i in range(15):
         print(digits.target[nex+i])
         if ova.predict(digits.data[nex+i])!=digits.target[nex+i]:
             error+=1
