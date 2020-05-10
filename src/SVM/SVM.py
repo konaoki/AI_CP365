@@ -8,7 +8,8 @@ class SVM:
         nfeat=np.shape(data)[1]
         nex=np.shape(data)[0]
         lm=np.zeros(nex)
-        lr = 0.01
+        lr = 0.001
+        C = 0.25
         bias=0
         epochs=50
         for l in range(epochs):
@@ -20,7 +21,9 @@ class SVM:
                     sum+=lm[j]*labels[j]*np.dot(data[i],data[j])
                 of=1-0.5*labels[i]*sum
                 #print(of)
-                lm[i]=lm[i]+(lr/np.dot(data[i],data[i]))*of
+                lmi=lm[i]+(lr/np.dot(data[i],data[i]))*of
+                if lmi<=C and lmi>=0:
+                    lm[i]=lmi
             if l==epochs-1:
                 biases=np.zeros(nex)
                 for i in range(nex):
