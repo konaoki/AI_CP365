@@ -11,11 +11,11 @@ class Neuralnet:
         nfeature=np.shape(data)[1]
         nhidden=self.nhidden
         nclass=self.nclass
-        v=random.rand(nfeature,nhidden)
-        w=random.rand(nclass,nhidden)
+        v=np.zeros((nfeature,nhidden))
+        w=np.zeros((nclass,nhidden))
         hlayer=np.zeros(nhidden)
         olayer=np.zeros(nclass)
-        lr=0.01
+        lr=1
         nepoch=self.nepoch
         print(v)
         print(w)
