@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import Neuralnet as nn
 class NNTester:
-    data = pd.read_csv('https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data', header = None, encoding='utf-8')
+    data = pd.read_csv('../../iris.data', header = None, encoding='utf-8')
     #data= data.replace(to_replace="Iris-setosa",value=0)
     #data=data.replace(to_replace="Iris-versicolor",value=1)
     #data=data.replace(to_replace="Iris-virginica",value=2)
