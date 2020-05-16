@@ -17,9 +17,6 @@ class Neuralnet:
         olayer=np.zeros(nclass)
         lr=1
         nepoch=self.nepoch
-        print(v)
-        print(w)
-        print("------------")
         for epoch in range(nepoch):
             for d in range(ndata):
                 dat=data[d]
@@ -45,12 +42,10 @@ class Neuralnet:
                             #print(d)
                             #print(olayer[r])
                             #print(hlayer[j])
-                            w[r,j]+=lr*dw
+                            w[r,j]-=lr*dw
                             dv+=(olayer[r]-lab)*olayer[r]*(1-olayer[r])*tempw[r,j]*x
                         dv=dv*2
-                        v[i,j]+=lr*dv
-        print(v)
-        print(w)
+                        v[i,j]-=lr*dv
         self.v=v
         self.w=w
         self.hlayer=hlayer
